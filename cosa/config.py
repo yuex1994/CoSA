@@ -376,6 +376,8 @@ class CosaArgParser(argparse.ArgumentParser):
             general_options.pop(option, None)
 
         unknown_gen_options = general_options.keys() - self._problem_options[GENERAL]
+        print(general_options.keys())
+        print(self._problem_options[GENERAL])
         if unknown_gen_options:
             raise RuntimeError("Expecting only general options in section"
                                " [GENERAL] but got {} in {}".format(unknown_gen_options, config_file))
@@ -442,6 +444,8 @@ class CosaArgParser(argparse.ArgumentParser):
                 continue
             problem_file_options = dict(config_args[section])
             unknown_problem_file_options = problem_file_options.keys() - self._problem_options[PROBLEM]
+            print(problem_file_options)
+            print(self._problem_options)
             if unknown_problem_file_options:
                 raise RuntimeError("Expecting only problem options "
                                    "in problem section but got {} in {}".format(unknown_problem_file_options, config_file))
