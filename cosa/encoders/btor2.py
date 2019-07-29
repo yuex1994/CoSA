@@ -205,12 +205,12 @@ class BTOR2Parser(ModelParser):
                 nodemap[nid] = BVNot(BVComp(getnode(nids[1]), zeros))
 
             if ntype == REDXOR:
-                width = get_type(getnode(nid[1])).width
+                width = get_type(getnode(nids[1])).width
                 nodemap[nid] = BV(0, width)
                 zeros = BV(0, width)
                 for yx_i in range(width):
                   tmp = BV(1 << yx_i, width)
-                  tmp_2 = BVAnd(tmp, B2BV(getnode(nid[1])))
+                  tmp_2 = BVAnd(tmp, B2BV(getnode(nids[1])))
                   tmp_3 = BVZExt(B2BV(BVComp(tmp_2, zeros)), int(width - 1))
                   nodemap[nid] = BVAdd(tmp_3, nodemap[nid])
                 nodemap[nid] = BVComp(BVAnd(BV(1, width), nodemap[nid]), BV(1, width))
